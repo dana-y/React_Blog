@@ -1,5 +1,4 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
 
@@ -7,6 +6,7 @@ const CategoryDl = styled.dl`
   display: flex;
   flex-wrap: wrap;
   color: var(--main-color);
+  margin: 2rem 0 1rem 0;
 `
 const CategoryDd = styled.dd`
 	margin-right: 0.4rem;
