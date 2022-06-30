@@ -1,7 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import deletePath from '../../assets/icon-delete.svg'
+
+import deleteIcon from '../../assets/icon-delete.svg'
+import deleteIconWhite from '../../assets/icon-delete-white.svg'
+import modifyIcon from '../../assets/icon-modify.svg'
+import modifyIconWhite from '../../assets/icon-modify-white.svg'
 
 const BtnGroup = styled.div`
 	display: flex;
@@ -27,10 +31,10 @@ const ModifyBtn = styled(Link)`
 	border: 0;
 	border-radius: var(--border-radius);
 	transition: all 0.3s;
-    background: var(--gray-background) url('../../assets/icon-modify.svg') no-repeat 50% 50% / 1.6rem;
+    background: var(--gray-background) url(${modifyIcon}) no-repeat 50% 50% / 1.6rem;
     right: 13rem;
     :hover {
-        background: var(--main-color) url('../../assets/icon-modify-white.svg') no-repeat 50% 50% / 1.6rem;
+        background: url(${modifyIconWhite}) var(--main-color) no-repeat 50% 50% / 1.6rem;
     }
 `
 const DeleteBtn = styled.button`
@@ -39,9 +43,9 @@ const DeleteBtn = styled.button`
 	border: 0;
 	border-radius: var(--border-radius);
 	transition: all 0.3s;
-    background: url(deletePath) var(--gray-background)  no-repeat 50% 50% / 1.6rem;
+    background: url(${deleteIcon}) var(--gray-background)  no-repeat 50% 50% / 1.6rem;
     :hover {
-    background: var(--red-color) url('../../assets/icon-delete-white.svg') no-repeat 50% 50% / 1.6rem;
+    background: var(--red-color) url(${deleteIconWhite}) no-repeat 50% 50% / 1.6rem;
     outline-color: rgba(var(--red-rgb), 0.2);
 	box-shadow: 0 0 0 1px var(--red-color);
 }
@@ -52,7 +56,7 @@ export default function ButtonGroup() {
             <ModifyBtn to="/">
                 <span class="a11y-hidden">modify</span>
             </ModifyBtn>
-            <DeleteBtn type="button" >
+            <DeleteBtn type="button">
                 <span class="a11y-hidden">delete</span>
             </DeleteBtn>
         </BtnGroup>

@@ -4,7 +4,9 @@ import Author from '../Posts/Author'
 import { useParams, Link } from 'react-router-dom'
 import Category from '../Posts/Category'
 import ButtonGroup from './ButtonGroup'
-import Banner from '../Banner/Banner'
+
+import likeIcon from '../../assets/icon-like.svg'
+import likeIconWhite from '../../assets/icon-like-white.svg'
 
 const ViewWrapSec = styled.section`
 	position: relative;
@@ -58,11 +60,11 @@ const LikeButton = styled.button`
 	padding-left: 3rem;
 	border: 1px solid rgba(var(--red-rgb), 0.5);
 	border-radius: var(--border-radius);
-  background: var(--white-color) url(../assets/icon-like.svg) no-repeat 2.5rem 50% / 2.4rem;
+  background: url(${likeIcon}) var(--white-color) no-repeat 2.5rem 50% / 2.4rem;
 	transition: all 0.3s;
   flex-shrink: 0;
   :hover, :active {
-    background: var(--red-color) url('./assets/icon-like-white.svg') no-repeat 2.5rem 50% / 2.4rem;
+    background: var(--red-color) url(${likeIconWhite}) no-repeat 2.5rem 50% / 2.4rem;
     color: var(--white-color);
   }
   :focus {
@@ -93,7 +95,6 @@ const ButtonBack = styled(Link)`
 	font-size: 1.6rem;
 `
 export default function PostView(props) {
-  // 현재 나타내야 할 post를 데이터더미에서 뽑아내기
   const postId = parseInt(useParams().id);
   const postData = props.posts.filter(e => e.id === postId);
   const data = postData[0]
@@ -124,7 +125,7 @@ export default function PostView(props) {
                 )}
             </div>
             <ButtonGroup />
-            <ButtonBack to="./">
+            <ButtonBack to="/">
               <span class="a11y-hidden">Back</span>
             </ButtonBack>
           </ViewInner>  
