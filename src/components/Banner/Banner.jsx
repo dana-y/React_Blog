@@ -1,10 +1,12 @@
 import React from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
+
+import mainBgImg from '../../assets/background.jpg'
 
 const BannerDiv = styled.div`
 	position: relative;
-	background: url() no-repeat 50% 50% / cover;
+	background:  no-repeat 50% 50% / cover;
 	height: 27em;
 	margin-bottom: -7em;
 `
@@ -38,29 +40,24 @@ const BannerContents = styled.div`
 	}
 }
 `
-// const BannerP = styled.p`
-// 	position: relative;
-// `
 const BannerSubTxt = styled.p`
 	border: 1px solid rgba(249, 249, 249, 0.3);
 	border-width: 1px 0;
 	padding: 1rem 0 0.8rem;
 	font-size: 2rem;
 	letter-spacing: 0.2em;
-	position: relative;
+	/* position: relative; */
 `
 const BannerMainTxt = styled.p`
 	font-weight: bold;
 	font-size: 5.4rem;
 	margin: 1.6rem 0;
-	position: relative;
 `
 const BannerDesc = styled.p`
 	font-size: 1.2rem;
 	text-align: left;
 	word-break: break-all;
 	padding: 0 0.8rem;
-	position: relative;
 `
 const Today = styled.p`
 	padding-left: 0.8em;
@@ -83,15 +80,10 @@ const Em = styled.em`
 	margin-bottom: -0.15em;
 	@media (max-width: 1260px) {
 		display: inline;
-			font-size: 1.4em;
+		font-size: 1.4em;
 	}
 `
 export default function Banner(props) {
-	const postId = parseInt(useParams().id);
-	const postData = props.posts.filter(e => e.id === postId);
-	const data = postData[0]
-
-	console.log("banner에서",postId);
 
 	const today = new Date();
 	const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
@@ -100,11 +92,22 @@ export default function Banner(props) {
 	const stringToday  = '' + today
 	const month = stringToday.slice(4,7);
 
-	const url = useLocation().pathname.slice(1,5);
 	const blog = props.blog
+	
+	let url = useLocation().pathname;
+	let urlName = url.slice(1,5);
+	let urlId = parseInt(url.slice(-1));
+
+	let postData = props.posts.filter(e => e.id === urlId);
+
+	let backgroungImg = mainBgImg
+
+	if(urlName === 'view') {
+		backgroungImg = postData[0].mainBg
+	} 
 
 	return (
-		<BannerDiv>
+		<BannerDiv style={{backgroundImage : `url(${backgroungImg})`}}>
 			<div className='max-width'>
 				<BannerContents>
 					{ url === "view" ?
