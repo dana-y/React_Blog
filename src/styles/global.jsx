@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-	
 :root {
 	--main-color: rgb(55, 170, 236);
 	--main-rgb: 55, 171, 236;
@@ -37,10 +36,6 @@ a {
 
 html {
 	font-size: 10px;
-	margin: 0;
-	padding: 0;
-	border: 0;
-	vertical-align: baseline;
 }
 
 body {
