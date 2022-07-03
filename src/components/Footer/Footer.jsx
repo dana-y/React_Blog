@@ -16,8 +16,8 @@ const FooterH2 = styled.h2`
   color: var(--gray-color);
 `
 
-const TopButton = styled.button`
-  position: absolute;
+const TopButton = styled.a`
+	position: absolute;
 	bottom: 0;
 	right: 0;
 	width: 6.4rem;
@@ -32,12 +32,12 @@ const TopButton = styled.button`
 `
 
 export default function Footer() {
-  return (
-    <FooterContent>
-      <FooterMaxWidth>
-        <FooterH2>©Weniv Corp.</FooterH2>
-        <TopButton>TOP</TopButton>
-      </FooterMaxWidth>
-    </FooterContent>
-  )
+	return (
+	<FooterContent>
+		<FooterMaxWidth>
+		<FooterH2>©Weniv Corp.</FooterH2>
+		<TopButton href='#top'>TOP</TopButton>
+		</FooterMaxWidth>
+	</FooterContent>
+	)
 }
