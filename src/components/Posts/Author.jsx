@@ -1,13 +1,11 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
 const AuthorWrap = styled.dl`
 	display: flex;
 	gap: 1rem;
 	color: #767676;
-	font-size:${props => (props.title) ? "1.4rem" : "1.2rem"};
-
+	font-size:${props => (props.title === undefined) ? "1.2rem" : "1.4rem"};
   @media (max-width: 1024px) {
     height: 5.2rem;
 		margin-bottom: 1rem;
@@ -37,11 +35,9 @@ const AuthorImg = styled.img`
 	height: 2em;
 	border-radius: 50%;
 `
-
 export default function Author(props) {
-  const postId = useParams();
   return (
-    <AuthorWrap>
+    <AuthorWrap >
       <dt className='a11y-hidden'>Author</dt>
       <AuthorDd>
         <AuthorImg src={props.profileImg} />

@@ -1,6 +1,6 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
+import { useLocation } from 'react-router-dom'
 
 import mainBgImg from '../../assets/background.jpg'
 
@@ -10,7 +10,6 @@ const BannerDiv = styled.div`
 	height: 27em;
 	margin-bottom: -7em;
 `
-
 const BannerContents = styled.div`
 	width: 28rem;
 	padding: 7rem 0 14.5rem;
@@ -30,7 +29,9 @@ const BannerContents = styled.div`
 	position: relative;
 	}
 	@media (max-width: 1280px) {
-	width: 44rem;
+	::before {
+			width: 44rem;
+		}
 	}
 	@media (max-width: 768px) {
 	width: 100%;
@@ -83,6 +84,7 @@ const Em = styled.em`
 		font-size: 1.4em;
 	}
 `
+
 export default function Banner(props) {
 
 	const today = new Date();
@@ -92,7 +94,7 @@ export default function Banner(props) {
 	const stringToday  = '' + today
 	const month = stringToday.slice(4,7);
 
-	const blog = props.blog
+	const blog = props.blog;
 	
 	let url = useLocation().pathname;
 	let urlName = url.slice(1,5);
@@ -100,20 +102,19 @@ export default function Banner(props) {
 
 	let postData = props.posts.filter(e => e.id === urlId);
 
-	let backgroungImg = mainBgImg
+	let backgroungImg = mainBgImg;
 
 	if(urlName === 'view') {
-		backgroungImg = postData[0].mainBg
+		backgroungImg = postData[0].mainBg;
 	} 
-
 	return (
 		<BannerDiv style={{backgroundImage : `url(${backgroungImg})`}}>
 			<div className='max-width'>
 				<BannerContents>
-					{ url === "view" ?
+					{ urlName === "view" ?
 						<Today>
 							{month}
-							<Em>{date}</Em>
+							<Em> {date}</Em>
 							{days[day]}
 						</Today> :
 						<>
@@ -126,5 +127,5 @@ export default function Banner(props) {
 				</BannerContents>
 			</div>
 		</BannerDiv>
-	)
+	);
 }

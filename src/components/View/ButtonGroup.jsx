@@ -50,6 +50,7 @@ const DeleteBtn = styled.button`
 	box-shadow: 0 0 0 1px var(--red-color);
 }
 `
+
 export default function ButtonGroup() {
     return (
         <BtnGroup>

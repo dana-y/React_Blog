@@ -1,11 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
-import {Link, useParams} from 'react-router-dom'
+import {Link} from 'react-router-dom'
+import styled, { css } from 'styled-components'
+
 import Category from './Category'
 import Author from './Author'
-
-
-
 
 const PostLink = styled(Link) `
   display: block;
@@ -20,14 +18,14 @@ const PostImg = styled.img`
 const PostWrap = styled.div`
   padding: 1.6rem 2.4rem 2.4rem;
 `
-const PostDes = styled.p`
-  /* 밑에랑 중복되는 코드. 태그가 달라도 줄일 방법이 없을까? */
+const PostStyle = css`
   display: -webkit-box;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	word-break: break-all;
-
+	word-break: break-all;  
+`
+const PostDes = styled.p`
   height: calc(1.4rem * 1.4 * 3);
 	margin-top: 1.6rem;
 	color: var(--gray-color);
@@ -38,15 +36,9 @@ const PostDes = styled.p`
 		height: auto;
 		-webkit-line-clamp: 1;
   }
+  ${PostStyle}
 `
-
 const WrapH3 = styled.h3`
-  display: -webkit-box;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	word-break: break-all;
-
   height: calc(1.8rem * 1.4 * 2);
   margin: 1rem 0;
   font-size: 1.8rem;
@@ -57,6 +49,7 @@ const WrapH3 = styled.h3`
     height: auto;
 		-webkit-line-clamp: 1;
   }
+  ${PostStyle}
 `
 
 export default function Post(props) {
