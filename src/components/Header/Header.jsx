@@ -1,32 +1,44 @@
-import React from 'react'
-import Logo from './Logo/Logo'
-import LoginInfo from './LoginInfo/LoginInfo'
+import { React } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+
+import LoginInfo from './LoginInfo'
+
+import logoImg from '../../assets/Logo.svg'
 
 const HeaderWrppaer = styled.header`
   background: var(--white-color);
-  width: 1224px;
-	max-width: calc(100% - 4rem);
-	margin: 0 auto;
 `
-
 const HeaderMaxWidth = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	gap: 4rem;
 	padding: 1rem 0;
-  width: 1224px;
-	max-width: calc(100% - 4rem);
-	margin: 0 auto;
 `
+const LogoH1 = styled.h1 `
+  font-size: 3rem;
+`
+const LogoLink = styled(Link) `
+	display: block;
+	padding: 0.4rem;
+	margin-left: -0.4rem;
+  > img {
+    display: block;
+  }
+`
+
 function Header() {
   return (
-    <HeaderWrppaer>
+    <HeaderWrppaer id='top'>
       <HeaderMaxWidth className='max-width'>
-      <Logo></Logo>
-      <LoginInfo></LoginInfo>
-      </HeaderMaxWidth>
+      <LogoH1>
+      <LogoLink to="/">
+        <img src={logoImg} alt="My Blog" />
+      </LogoLink>
+    </LogoH1>
+    <LoginInfo></LoginInfo>
+    </HeaderMaxWidth>
     </HeaderWrppaer>
   )
 }
