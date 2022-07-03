@@ -1,12 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import Author from '../Posts/Author'
 import { useParams, Link } from 'react-router-dom'
+
+import Author from '../Posts/Author'
 import Category from '../Posts/Category'
 import ButtonGroup from './ButtonGroup'
 
 import likeIcon from '../../assets/icon-like.svg'
 import likeIconWhite from '../../assets/icon-like-white.svg'
+import backIcon from '../../assets/ArrowLeft-blue.svg'
 
 const ViewWrapSec = styled.section`
 	position: relative;
@@ -33,7 +35,6 @@ const ViewInner = styled.div`
   width: 100%;
 	max-width: 100%;
 `
-
 const TitleWrap = styled.div`
 	display: flex;
 	align-items: flex-end;
@@ -51,9 +52,8 @@ const TitleH2 = styled.h2`
 	text-transform: none;
   font-size: 3.2rem;
 	font-weight: bold;
-  margin-bottom: 4.8rem;
+  margin-bottom: 0;
 `
-
 const LikeButton = styled.button`
 	width: 12rem;
 	height: 4rem;
@@ -91,9 +91,21 @@ const ButtonBack = styled(Link)`
 	width: 6.4rem;
 	height: 6.4rem;
 	border-radius: 0 var(--border-radius) var(--border-radius) 0;
-	background: var(--gray-background) url(../assets/ArrowLeft-blue.svg) no-repeat 50% 50% / 4rem;
+	background: var(--gray-background) url(${backIcon}) no-repeat 50% 50% / 4rem;
 	font-size: 1.6rem;
+  position: absolute;
+	top: 8rem;
+	left: 0;
+  @media (max-width: 1024px) {
+    top: 6rem;
+		width: 5.2rem;
+		height: 5.2rem;
+  }
+  @media (max-width: 640px){
+    top: 4rem;
+  }
 `
+
 export default function PostView(props) {
   const postId = parseInt(useParams().id);
   const postData = props.posts.filter(e => e.id === postId);
